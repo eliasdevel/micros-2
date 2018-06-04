@@ -5,6 +5,7 @@ TARGET = blink
 SOURCES += \
 	main.c \
 	leds.c \
+	uart.c \
 	display.c
 
 # Modelo do microcontrolador.

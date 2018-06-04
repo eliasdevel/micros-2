@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 void init_uart(unsigned int baud_rate){
 	unsigned short baud = ((F_CPU/16)/(baud_rate)-1);
@@ -6,8 +7,8 @@ void init_uart(unsigned int baud_rate){
 	UBRR0H = baud >> 8;
 	UBRR0L = baud;
 
-	/*HABILITA O MÓDULO DE RECEPÇÃO E ENVIO DE DADOS*/
-	UCSR0B  = (1<< RXEN0) | (1 << TXEN0);
+	/*HABILITA O MÓDULO DE RECEPÇÃO E ENVIO DE DADOS e hahilita interrupçao do modulo*/
+	UCSR0B  = (1<< RXEN0) | (1 << TXEN0) | (1 << RXCIE0);
 
 	/*MODO ASSÍNCRONO, SEM PARIDADE 1 STOP BIT E 8 BITS DE DADOS */
 	UCSR0C = (1<< UCSZ01) | (1 << UCSZ00);

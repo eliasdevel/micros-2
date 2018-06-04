@@ -77,8 +77,10 @@ void lcd_write_str(char *str)
 	while (*str != '\0') {
 		lcd_write_char(*str);
 		str++;
-	}extern void leds_config(void);
+	}
+
 }
+
 
 void lcd_clear()
 {
@@ -108,7 +110,7 @@ void lcd_init(){
 	lcd_set_mode(0);
 	lcd_write_nibble(0x03);
 	lcd_pulse_en();
-	_delay_us(100);extern void leds_config(void);
+	_delay_us(100);
 
 	lcd_set_mode(0);
 	lcd_write_nibble(0x03);
