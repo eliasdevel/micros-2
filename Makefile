@@ -21,7 +21,7 @@ F_CPU = 16000000UL
 #  PG_PORT = porta de comunicação
 #  PG_BAUD = velocidade de gravação
 PG	= wiring
-PG_PORT	= /dev/ttyACM1
+PG_PORT	= /dev/ttyACM0
 PG_BAUD	= 115200
 
 # Outras configurações.
