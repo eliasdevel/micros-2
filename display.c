@@ -74,7 +74,7 @@ void lcd_write_char(char c)
 
 void lcd_write_str(char *str)
 {
-	while (*str != '\0') {
+	while (*str != '\0' && *str != '\n') {
 		lcd_write_char(*str);
 		str++;
 	}

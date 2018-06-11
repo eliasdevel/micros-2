@@ -2,11 +2,12 @@
 #include <avr/interrupt.h>
 
 void init_uart(unsigned int baud_rate){
-	unsigned short baud = ((F_CPU/16)/(baud_rate)-1);
+	unsigned int baud = ((16000000/16)/(baud_rate)-1);
 	/* Configura a taxa de comunicação nos registradores. */
-	UBRR0H = baud >> 8;
-	UBRR0L = baud;
-
+	//UBRR0H =(unsigned char) baud >> 8;
+	//UBRR0L =(unsigned char) baud;
+	UBRR0H =0x00;
+	UBRR0L = 0x07;
 	/*HABILITA O MÓDULO DE RECEPÇÃO E ENVIO DE DADOS e hahilita interrupçao do modulo*/
 	UCSR0B  = (1<< RXEN0) | (1 << TXEN0) | (1 << RXCIE0);
 
