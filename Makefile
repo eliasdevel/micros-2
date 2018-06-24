@@ -11,7 +11,7 @@ SOURCES += \
 # Modelo do microcontrolador.
 #   Arduino Uno  = atmega328p
 #   Arduino Mega = atmega2560
-MCU = atmega2560
+MCU = atmega328p
 
 # Frequência do cristal.
 F_CPU = 16000000UL
@@ -20,9 +20,9 @@ F_CPU = 16000000UL
 #  PG 	   = arduino (Arduino Uno) | wiring (Arduino Mega/ADK)
 #  PG_PORT = porta de comunicação
 #  PG_BAUD = velocidade de gravação
-PG	= wiring
-PG_PORT	= /dev/ttyACM0
-PG_BAUD	= 115200
+PG	= arduino
+PG_PORT	= /dev/ttyUSB0
+PG_BAUD	= 57600 
 
 # Outras configurações.
 CC 	= avr-gcc
@@ -30,7 +30,7 @@ OBJCOPY = avr-objcopy
 CP 	= cp
 DEL 	= rm
 
-CFLAGS  = -Os -Wall -Wextra -g -std=gnu99 -DF_CPU=$(F_CPU)
+CFLAGS  = -Os -Wall -Wextra -g -std=gnu99 -DF_CPU=$(F_CPU) 
 ARCH	= -mmcu=$(MCU)
 
 OBJECTS  = $(SOURCES:.c=.o)
@@ -50,5 +50,4 @@ clean:
 	$(DEL) -f *.o *.elf *.hex
 
 prog: $(TARGET).hex
-	sudo avrdude -D -c $(PG) -p $(MCU) -P $(PG_PORT) -b $(PG_BAUD) -U flash:w:$<
-
+	sudo avrdude  -c $(PG) -p $(MCU) -P $(PG_PORT) -b $(PG_BAUD) -U flash:w:$<:i
