@@ -4,9 +4,7 @@ TARGET = blink
 # Define os fontes do projeto.
 SOURCES += \
 	main.c \
-	leds.c \
-	uart.c \
-	display.c
+	uart.c 
 
 # Modelo do microcontrolador.
 #   Arduino Uno  = atmega328p
