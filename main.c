@@ -193,8 +193,7 @@ int main(void)
 	temp = (short) read_ADC10();
 	temp = (3.3*temp*100)/1023.0;
 
-        // _delay_ms(1000);
-        // uart_puts("merda");
+        
         
         if(nova_menssagem ==1){
         	
