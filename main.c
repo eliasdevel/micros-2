@@ -10,7 +10,7 @@ volatile int pisca =0;
 volatile int count =0;
 volatile char buffer[30];
 volatile int nova_menssagem = 0;
-uint8_t temp =0;
+short temp =0;
 
 char tosend[30];
 
@@ -106,10 +106,12 @@ void testMessage( char b[]){
             }
 
             if(b[2] == 0x20){
-                b[1] = 2;
+                b[1] = 3;
                 b[2] = 0x21;
 		
-                b[3] = temp;
+                b[4] =  8 << temp;
+                b[3] =   temp;
+
                 b[4] = checksum(b);
                 
                 write_msg(b);
@@ -188,7 +190,7 @@ int main(void)
     
     int i =0;
     while (1) {
-	temp = (uint8_t) read_ADC10();
+	temp = (short) read_ADC10();
 	temp = (3.3*temp*100)/1023.0;
 
         // _delay_ms(1000);
